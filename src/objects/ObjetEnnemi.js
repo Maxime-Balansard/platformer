@@ -13,7 +13,8 @@ class ObjetEnnemi extends ObjetPhysique{
             this,
             scene.hitMonster,
             null,
-            scene
+            scene,
+           
         );
     }
 }

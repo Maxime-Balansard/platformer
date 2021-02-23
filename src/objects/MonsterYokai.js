@@ -1,14 +1,12 @@
-class Yokai extends ObjetEnnemi{
+class MonsterYokai extends ObjetEnnemi{
     /**
-     * Un oiseau qui vole et fait des allez -retours
+     *
      * @param {Tableau} scene
      * @param x
      * @param y
      */
     constructor(scene, x, y) {
         super(scene, x, y, "yokai");
-
-       
         //pas de gravité
         this.body.allowGravity=false;
         this.setBodySize(40,40);//réduit le hit
@@ -17,9 +15,44 @@ class Yokai extends ObjetEnnemi{
         this.setVelocityX(-150);
         this.setCollideWorldBounds(true);
         this.setDepth(10);
-    
-        
-        this.scene.tweens.add({
+        //définir les propriété que l'on va utiliser dans notre animation
+
+        // X
+        this.originalX=x;
+        this.minX=x-400;
+        this.maxX=x+800;
+
+        // Y
+        this.originalY=y;
+        this.minY=y -64;
+        this.maxY=height-128;
+
+        // on applique les propriété du début de l'animation
+        this.x=this.minX;
+        this.y=this.minY;
+        this.alpha=0;
+        let me=this;
+
+        //on fait apparaitre notre objet avec un petit delay, puis on lance l'animation
+        //ceci a pour effet de décaler les animations pour ce même objet
+        scene.tweens.add({
+                targets:this,
+                duration:5000,
+                delay:Math.random()*1000,
+                alpha:{
+                    startDelay:Math.random()*5000,
+                    from:0,
+                    to:1,
+                },
+                onComplete: function () {
+                    me.start();
+                }
+            })
+
+    }
+
+    start(){
+      this.scene.tweens.add({
             targets: this,
             y: {
                 from: this.minY,
@@ -28,7 +61,9 @@ class Yokai extends ObjetEnnemi{
                 ease: 'Sine.easeInOut', //courbe d'accélération/décélération
                 yoyo: -1, // de haut en bas, puis de bas en haut
                 repeat:-1 //se répète à l'infini
+
             }
+            
         });
     }
 

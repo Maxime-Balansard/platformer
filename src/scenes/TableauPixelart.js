@@ -8,13 +8,21 @@ class TableauPixelart extends Tableau{
         this.load.image('ciel', 'assets/ciel.jpg');
         this.load.image('devant', 'assets/devant.png');
         this.load.image('montagne', 'assets/montagne.png');
-        this.load.image('yokai', 'assets/yokai.png');
         this.load.image('bat', 'assets/bat.png');
+        this.load.image('saut', 'assets/saut.png');
+        this.load.image('saut128', 'assets/saut128.png');
+        //monstres
+        this.load.image('yokai', 'assets/yokai.png');
+        this.load.image('lanterne', 'assets/lanterne.png');
+        this.load.image('onii', 'assets/onii.png');
+        this.load.image('monster-fly', 'assets/monster-fly.png');
+
     }
     create() {
         super.create();
 
-        new Yokai(this,400,300);
+        
+        
         //on définit la taille du tableau
         let largeurDuTableau=4000;
         let hauteurDuTableau=448; //la hauteur est identique au cadre du jeu
@@ -28,34 +36,51 @@ class TableauPixelart extends Tableau{
          this.platforms = this.physics.add.staticGroup();
          this.platforms.create(2270, 320, 'ground').setDisplaySize(290,20).refreshBody();
          this.platforms.create(2270, 225, 'ground').setDisplaySize(230,14).refreshBody();
-         this.platforms.create(896,448,'ground').setDisplaySize(10,100).refreshBody();
+           //1er tableau
+         this.platforms.create(300,300,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
+         this.platforms.create(600,300,'saut128').setDisplaySize(128,15).refreshBody().setDepth(10);
+           //2eme tableau
+        this.platforms.create(1150,300,'saut128').setDisplaySize(128,15).refreshBody().setDepth(10);
+        this.platforms.create(1600,300,'saut128').setDisplaySize(128,15).refreshBody().setDepth(10);
+        this.platforms.create(1300,220,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
+        this.platforms.create(1450,220,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
+        this.platforms.create(1375,120,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
 
-         //this.platforms.create(50, 250, 'ground');
-         
-        //quelques étoiles et plateformes qui vont avec
+        //3eme tableau
+        this.platforms.create(2020,300,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
+        this.platforms.create(2520,300,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
+
+        //quelques étoiles 
         
         let largeur=128;
         this.stars=this.physics.add.group();
-        for(let posX=largeur/2;posX<largeur*32;posX+=largeur)
-        {
-            this.stars.create(posX ,0,"star");
-        }
-        this.stars.children.iterate(function (child) 
-        {
-            child.setBounce(0.3);
-            child.setGravity(1);
-            child.setCollideWorldBounds(true);
-            child.setVelocity(10,Phaser.Math.Between(-100, 100));
-            child.setMaxVelocity(0,500);
-        });
-        this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
-        this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
+        //1er tableau
+        this.stars.create(300,0,"star").setCollideWorldBounds(true).setBounce(0.4);
+        this.stars.create(450,300,"star").setCollideWorldBounds(true);
+        this.stars.create(600,0,"star").setCollideWorldBounds(true).setBounce(0.4);
+         //2eme tableau
+         this.stars.create(1150,200,"star").setCollideWorldBounds(true).setBounce(0.4);
+         this.stars.create(1600,200,"star").setCollideWorldBounds(true).setBounce(0.4);
+         this.stars.create(1375,100,"star").setCollideWorldBounds(true).setBounce(0.4);
+         //3eme tableau
+         this.stars.create(2200,100,"star").setCollideWorldBounds(true).setBounce(0.4);
+         this.stars.create(2340,100,"star").setCollideWorldBounds(true).setBounce(0.4);
+         this.stars.create(2270,250,"star").setCollideWorldBounds(true).setBounce(0.4);
+
+         this.stars.create(2200,350,"star").setCollideWorldBounds(true).setBounce(0.4);
+         this.stars.create(2340,350,"star").setCollideWorldBounds(true).setBounce(0.4);
+         this.stars.create(2270,350,"star").setCollideWorldBounds(true).setBounce(0.4);
+         //4eme tableau
+
+
+        
+        this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this); 
         this.physics.add.collider(this.player,this.platforms);
         this.physics.add.collider(this.platforms, this.stars);
-        //this.physics.add.collider(this.Yokai, this.platforms);
+        
 
 
-        //mur pour mobs
+        
         
 
 
@@ -118,8 +143,21 @@ class TableauPixelart extends Tableau{
         maison.setDepth(9)
         this.player.setDepth(10)
         
+        //tout les tableaux
+        new MonsterYokai(this,400,300);
 
-        
+        //1er tableau 
+       new Oni(this,200,416);
+       //2eme tableau
+       new Oni(this,1100,416);
+       new MonsterFly(this,1100,200)
+       new MonsterFly(this,1200,100)
+      
+       //3eme tableau
+       new Lanterne(this,2400,120);
+       new Lanterne(this,2540,120);
+            
+
 
         
     }
