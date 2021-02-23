@@ -14,7 +14,7 @@ class TableauPixelart extends Tableau{
         //monstres
         this.load.image('yokai', 'assets/yokai.png');
         this.load.image('lanterne', 'assets/lanterne.png');
-        this.load.image('onii', 'assets/onii.png');
+    
         this.load.image('monster-fly', 'assets/monster-fly.png');
 
     }
@@ -48,7 +48,7 @@ class TableauPixelart extends Tableau{
 
         //3eme tableau
         this.platforms.create(2020,300,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
-        this.platforms.create(250,300,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
+        this.platforms.create(2520,300,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
 
         //quelques étoiles 
         
