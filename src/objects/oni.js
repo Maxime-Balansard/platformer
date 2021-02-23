@@ -6,7 +6,7 @@ class Oni extends ObjetEnnemi{
      * @param y
      */
     constructor(scene, x, y) {
-        super(scene, x, y, "yokai");
+        super(scene, x, y, "onii");
         //pas de gravité
         this.body.allowGravity=false;
         this.setCollideWorldBounds(true);
