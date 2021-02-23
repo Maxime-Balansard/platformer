@@ -1,3 +1,3 @@
- https://maxime-balansard.github.io/Platformerr/.
+ https://maxime-balansard.github.io/Platformer/.
 
 hey
