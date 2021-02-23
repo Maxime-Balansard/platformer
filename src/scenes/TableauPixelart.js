@@ -48,7 +48,7 @@ class TableauPixelart extends Tableau{
 
         //3eme tableau
         this.platforms.create(2020,300,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
-        this.platforms.create(2520,300,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
+        this.platforms.create(250,300,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
 
         //quelques étoiles 
         
@@ -146,12 +146,12 @@ class TableauPixelart extends Tableau{
         //tout les tableaux
         new MonsterYokai(this,400,300);
 
-        //1er tableau 2
+        //1er tableau 
        new Oni(this,200,416);
        //2eme tableau
        new Oni(this,1100,416);
        new MonsterFly(this,1100,200)
-       //new MonsterFly(this,1200,100)
+       new MonsterFly(this,1200,100)
       
        //3eme tableau
        new Lanterne(this,2400,120);
