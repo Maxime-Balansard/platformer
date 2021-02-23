@@ -146,7 +146,7 @@ class TableauPixelart extends Tableau{
         //tout les tableaux
         new MonsterYokai(this,400,300);
 
-        //1er tableau 
+        //1er tableau 2
        new Oni(this,200,416);
        //2eme tableau
        new Oni(this,1100,416);
