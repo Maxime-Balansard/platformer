@@ -14,7 +14,6 @@ class TableauPixelart extends Tableau{
         //monstres
         this.load.image('yokai', 'assets/yokai.png');
         this.load.image('lanterne', 'assets/lanterne.png');
-        this.load.image('onii', 'assets/onii.png');
         this.load.image('monster-fly', 'assets/monster-fly.png');
 
     }
