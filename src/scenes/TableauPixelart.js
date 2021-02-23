@@ -149,7 +149,7 @@ class TableauPixelart extends Tableau{
         //1er tableau 
        //new Oni(this,200,416);
        //2eme tableau
-       new Oni(this,1100,416);
+       //new Oni(this,1100,416);
        new MonsterFly(this,1100,200)
        new MonsterFly(this,1200,100)
       
