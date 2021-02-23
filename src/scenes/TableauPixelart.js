@@ -45,10 +45,20 @@ class TableauPixelart extends Tableau{
         this.platforms.create(1300,220,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
         this.platforms.create(1450,220,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
         this.platforms.create(1375,120,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
-
         //3eme tableau
         this.platforms.create(2020,300,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
         this.platforms.create(2520,300,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
+        //4eme tableau
+        this.platforms.create(2925,270,'saut128').setDisplaySize(128,15).refreshBody().setDepth(10);
+        this.platforms.create(3375,270,'saut128').setDisplaySize(128,15).refreshBody().setDepth(10);
+        this.platforms.create(3150,140,'saut128').setDisplaySize(128,15).refreshBody().setDepth(10);
+
+        this.platforms.create(2950,170,'saut').setDisplaySize(64,15).refreshBody().setDepth(10);
+        this.platforms.create(3150,300,'saut').setDisplaySize(64,15).refreshBody().setDepth(10);
+        this.platforms.create(3350,170,'saut').setDisplaySize(64,15).refreshBody().setDepth(10);
+        
+        
+
 
         //quelques étoiles 
         
@@ -71,6 +81,20 @@ class TableauPixelart extends Tableau{
          this.stars.create(2340,350,"star").setCollideWorldBounds(true).setBounce(0.4);
          this.stars.create(2270,350,"star").setCollideWorldBounds(true).setBounce(0.4);
          //4eme tableau
+         this.stars.create(2925,250,"star").setCollideWorldBounds(true).setBounce(0.4);
+         this.stars.create(3150,280,"star").setCollideWorldBounds(true).setBounce(0.4);
+         this.stars.create(3375,250,"star").setCollideWorldBounds(true).setBounce(0.4);
+
+         this.stars.create(3125,120,"star").setCollideWorldBounds(true).setBounce(0.4);
+         this.stars.create(3175,120,"star").setCollideWorldBounds(true).setBounce(0.4);
+         this.stars.create(4000,120,"star").setCollideWorldBounds(true).setBounce(0.4);
+
+         for(let posX=3500;posX<4000;posX+=20){
+            let etoileY=350+Math.sin(posX);
+            let star=this.stars.create(posX ,etoileY,"star");
+            star.body.allowGravity=true;
+        }
+         
 
 
         
@@ -148,14 +172,21 @@ class TableauPixelart extends Tableau{
 
         //1er tableau 
         new MonsterSol(this,200,416);
+
        //2eme tableau
        new MonsterSol(this,1100,416);
-       new MonsterFly(this,1100,200)
-       new MonsterFly(this,1200,100)
-      
+       new MonsterFly(this,1100,200);
+       new MonsterFly(this,1200,100);
+
        //3eme tableau
        new Lanterne(this,2400,120);
        new Lanterne(this,2540,120);
+       //4eme tableau
+       new Lanterne(this,3350,120);
+       new MonsterFly(this,2900,250);
+       new MonsterFly(this,3000,120);
+       new MonsterSol(this,2900,416);
+
             
 
 
