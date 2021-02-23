@@ -147,7 +147,8 @@ class TableauPixelart extends Tableau{
         new MonsterYokai(this,400,300);
 
         //1er tableau 
-       
+     
+        //wtf
        //2eme tableau
       
        new MonsterFly(this,1100,200)
