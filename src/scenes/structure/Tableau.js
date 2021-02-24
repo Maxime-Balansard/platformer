@@ -19,12 +19,15 @@ class Tableau extends Phaser.Scene{
         this.load.image('Blood', 'assets/Blood.png');
         this.load.image('yokai', 'assets/yokai.png');
         this.load.image('spike', 'assets/spike.png');
+        this.load.audio('piece', 'assets/sounds/piece.mp3');
+        this.load.audio('mort', 'assets/sounds/mort.mp3');
         this.load.spritesheet('player',
             'assets/player.png',
             { frameWidth: 32, frameHeight: 48  }
         );
     }
     create(){
+       
         Tableau.current=this;
         this.sys.scene.scale.lockOrientation("landscape")
         console.log("On est sur "+this.constructor.name+" / "+this.scene.key);
@@ -81,12 +84,24 @@ class Tableau extends Phaser.Scene{
             }
         })
     }
+    
 
     ramasserEtoile (player, star)
     {
         star.disableBody(true, true);
         ui.gagne();
+        this.music = this.sound.add('piece');
 
+        var musicConfig = {
+            mute: false,
+            volume: 0.1,
+            rate : 1,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay:0,
+        }
+        this.music.play(musicConfig);
         //va lister tous les objets de la scène pour trouver les étoies et vérifier si elles sont actives
         let totalActive=0;
         for(let child of this.children.getChildren()){
@@ -114,7 +129,7 @@ class Tableau extends Phaser.Scene{
         this.scene.restart();
 
     }
-
+    
     /**
      * Quand on touche un monstre
      * si on le touche par en haut on le tue, sinon c'est lui qui nous tue
@@ -123,6 +138,20 @@ class Tableau extends Phaser.Scene{
      */
     hitMonster(player, monster){
         let me=this;
+
+        this.music = this.sound.add('mort');
+
+        var musicConfig = {
+            mute: false,
+            volume: 0.1,
+            rate : 1,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay:0,
+        }
+        this.music.play(musicConfig);
+
         if(monster.isDead !== true){ //si notre monstre n'est pas déjà mort
             if(
                 // si le player descend
@@ -151,6 +180,7 @@ class Tableau extends Phaser.Scene{
                         me.player.anims.play('turn');
                         me.player.isDead=false;
                         me.scene.restart();
+                        
                     })
 
                 }

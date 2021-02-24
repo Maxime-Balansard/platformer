@@ -10,8 +10,7 @@ class MonsterSol extends ObjetEnnemi{
         //pas de gravité
         this.body.allowGravity=false;
         this.setCollideWorldBounds(true);
-        
-       
+        this.setBodySize(this.body.width-32,this.body.height-32);
 //définir les propriété que l'on va utiliser dans notre animation
 
         // X

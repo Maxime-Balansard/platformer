@@ -16,6 +16,8 @@ class TableauPixelart extends Tableau{
         this.load.image('lanterne', 'assets/lanterne.png');
     
         this.load.image('monster-fly', 'assets/monster-fly.png');
+        //sounds
+        this.load.audio('jojo', 'assets/sounds/jojo.mp3');
 
     }
     create() {
@@ -89,7 +91,7 @@ class TableauPixelart extends Tableau{
          this.stars.create(3175,120,"star").setCollideWorldBounds(true).setBounce(0.4);
          this.stars.create(4000,120,"star").setCollideWorldBounds(true).setBounce(0.4);
 
-         for(let posX=3500;posX<4000;posX+=20){
+         for(let posX=3500;posX<4000;posX+=50){
             let etoileY=350+Math.sin(posX);
             let star=this.stars.create(posX ,etoileY,"star");
             star.body.allowGravity=true;
@@ -123,6 +125,7 @@ class TableauPixelart extends Tableau{
         maison.body.allowGravity=0; //la gravité n'a pas d'effet ici
         maison.setImmovable(true); //ne bouge pas quand on rentre dedans
         
+
         //on change de ciel, on fait une tileSprite ce qui permet d'avoir une image qui se répète
         this.sky=this.add.tileSprite(
             0,
@@ -161,31 +164,29 @@ class TableauPixelart extends Tableau{
     
 
         //fait passer les éléments devant le ciel
-        //this.platforms.setDepth(10)
         this.stars.setDepth(10)
         sol.setDepth(10)
         maison.setDepth(9)
         this.player.setDepth(10)
-        
+        this.blood.setDepth(10)
+
+    //monstres
         //tout les tableaux
         new MonsterYokai(this,400,300);
-
         //1er tableau 
         new MonsterSol(this,200,416);
-
-       //2eme tableau
-       new MonsterSol(this,1100,416);
-       new MonsterFly(this,1100,200);
-       new MonsterFly(this,1200,100);
-
-       //3eme tableau
-       new Lanterne(this,2400,120);
-       new Lanterne(this,2540,120);
-       //4eme tableau
-       new Lanterne(this,3350,120);
-       new MonsterFly(this,2900,250);
-       new MonsterFly(this,3000,120);
-       new MonsterSol(this,2900,416);
+        //2eme tableau
+        new MonsterSol(this,1100,416);
+        new MonsterFly(this,1100,200);
+        new MonsterFly(this,1200,100);
+        //3eme tableau
+        new Lanterne(this,2400,120);
+        new Lanterne(this,2540,120);
+        //4eme tableau
+        new Lanterne(this,3350,120);
+        new MonsterFly(this,2900,250);
+        new MonsterFly(this,3000,120);
+        new MonsterSol(this,2900,416);
 
             
 
