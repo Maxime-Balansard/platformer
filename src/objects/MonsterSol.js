@@ -6,11 +6,11 @@ class MonsterSol extends ObjetEnnemi{
      * @param y
      */
     constructor(scene, x, y) {
-        super(scene, x, y, "yokai");
+        super(scene, x, y, "oni");
         //pas de gravité
         this.body.allowGravity=false;
         this.setCollideWorldBounds(true);
-        this.setBodySize(this.body.width-32,this.body.height-32);
+        this.setBodySize(this.body.width-20,this.body.height-15);
 //définir les propriété que l'on va utiliser dans notre animation
 
         // X

@@ -6,7 +6,7 @@ class MonsterYokai extends ObjetEnnemi{
      * @param y
      */
     constructor(scene, x, y) {
-        super(scene, x, y, "yokai");
+        super(scene, x, y, "yokaiRouge");
         //pas de gravité
         this.body.allowGravity=false;
         this.setBodySize(40,40);//réduit le hit

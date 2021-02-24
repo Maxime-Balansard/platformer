@@ -11,9 +11,13 @@ class TableauPixelart extends Tableau{
         this.load.image('bat', 'assets/bat.png');
         this.load.image('saut', 'assets/saut.png');
         this.load.image('saut128', 'assets/saut128.png');
+        this.load.image('oni', 'assets/oni.png');
+        this.load.image('yokaiRouge', 'assets/yokaiRouge.png');
         //monstres
         this.load.image('yokai', 'assets/yokai.png');
         this.load.image('lanterne', 'assets/lanterne.png');
+        this.load.image('oni', 'assets/oni.png');
+        this.load.image('yokaiRouge', 'assets/yokaiRouge.png');
     
         this.load.image('monster-fly', 'assets/monster-fly.png');
         //sounds
