@@ -21,6 +21,10 @@ class Tableau extends Phaser.Scene{
         this.load.image('spike', 'assets/spike.png');
         this.load.audio('piece', 'assets/sounds/piece.mp3');
         this.load.audio('mort', 'assets/sounds/mort.mp3');
+        this.load.audio('jojo', 'assets/sounds/jojo.mp3');
+        this.load.audio('jardin', 'assets/sounds/jardin.mp3');
+        
+
         this.load.spritesheet('player',
             'assets/player.png',
             { frameWidth: 32, frameHeight: 48  }
@@ -102,6 +106,7 @@ class Tableau extends Phaser.Scene{
             delay:0,
         }
         this.music.play(musicConfig);
+        
         //va lister tous les objets de la scène pour trouver les étoies et vérifier si elles sont actives
         let totalActive=0;
         for(let child of this.children.getChildren()){
@@ -139,7 +144,8 @@ class Tableau extends Phaser.Scene{
     hitMonster(player, monster){
         let me=this;
 
-        this.music = this.sound.add('mort');
+       
+       this.music = this.sound.add('mort');
 
         var musicConfig = {
             mute: false,
@@ -182,6 +188,8 @@ class Tableau extends Phaser.Scene{
                         me.scene.restart();
                         
                     })
+
+
 
                 }
 

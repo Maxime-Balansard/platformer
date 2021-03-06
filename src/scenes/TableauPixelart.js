@@ -5,11 +5,13 @@ class TableauPixelart extends Tableau{
         this.load.image('star', 'assets/star.png');
         this.load.image('ground', 'assets/platform.png');
         this.load.image('sol', 'assets/Sol 4000.png');
-        this.load.image('ciel', 'assets/ciel.jpg');
         this.load.image('devant', 'assets/devant.png');
-        this.load.image('montagne', 'assets/montagne.png');
         this.load.image('bat', 'assets/bat.png');
         this.load.image('saut', 'assets/saut.png');
+
+        this.load.image('mont', 'assets/mont.png');
+        this.load.image('ciela', 'assets/ciela.png');
+        
         this.load.image('saut128', 'assets/saut128.png');
         this.load.image('oni', 'assets/oni.png');
         this.load.image('yokaiRouge', 'assets/yokaiRouge.png');
@@ -55,8 +57,8 @@ class TableauPixelart extends Tableau{
         this.platforms.create(2020,300,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
         this.platforms.create(2520,300,'saut').setDisplaySize(60,15).refreshBody().setDepth(10);
         //4eme tableau
-        this.platforms.create(2925,270,'saut128').setDisplaySize(128,15).refreshBody().setDepth(10);
-        this.platforms.create(3375,270,'saut128').setDisplaySize(128,15).refreshBody().setDepth(10);
+        this.platforms.create(2935,270,'saut128').setDisplaySize(128,15).refreshBody().setDepth(10);
+        this.platforms.create(3365,270,'saut128').setDisplaySize(128,15).refreshBody().setDepth(10);
         this.platforms.create(3150,140,'saut128').setDisplaySize(128,15).refreshBody().setDepth(10);
 
         this.platforms.create(2950,170,'saut').setDisplaySize(64,15).refreshBody().setDepth(10);
@@ -64,7 +66,6 @@ class TableauPixelart extends Tableau{
         this.platforms.create(3350,170,'saut').setDisplaySize(64,15).refreshBody().setDepth(10);
         
         
-
 
         //quelques étoiles 
         
@@ -121,6 +122,8 @@ class TableauPixelart extends Tableau{
         sol.setImmovable(true); //ne bouge pas quand on rentre dedans
         this.physics.add.collider(this.player, sol);//le joueur rebondit dessus
         this.physics.add.collider(this.stars, sol);//les étoiles rebondissent dessus
+        
+
 
 
         let maison=this.physics.add.sprite(2110,height-320,"bat");
@@ -130,28 +133,41 @@ class TableauPixelart extends Tableau{
         maison.setImmovable(true); //ne bouge pas quand on rentre dedans
         
 
+
         //on change de ciel, on fait une tileSprite ce qui permet d'avoir une image qui se répète
-        this.sky=this.add.tileSprite(
+        this.sky4=this.add.tileSprite(
             0,
             0,
             this.sys.canvas.width,
             this.sys.canvas.height,
-            'montagne'
+            'ciela'
         );
-        this.sky.setOrigin(0,0);
-        this.sky.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
+        this.sky4.setOrigin(0,0);
+        this.sky4.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
+        this.sky4.tileScaleX=this.sky.tileScaleY=0.8;
         //on ajoute une deuxième couche de ciel
         this.sky2=this.add.tileSprite(
             0,
             0,
             this.sys.canvas.width,
             this.sys.canvas.height,
-            'ciel'
+            'ciela'
         );
         this.sky2.setScrollFactor(0);
         this.sky2.setOrigin(0,0);
-        this.sky2.alpha=0.2;
-        //this.sky.tileScaleX=this.sky.tileScaleY=0.8;
+        this.sky2.alpha=0.1;
+    
+         //on change de ciel, on fait une tileSprite ce qui permet d'avoir une image qui se répète
+         this.sky=this.add.tileSprite(
+            0,
+            0,
+            this.sys.canvas.width,
+            this.sys.canvas.height,
+            'mont'
+        );
+        this.sky.setOrigin(0,0);
+        this.sky.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
+        this.sky.setDepth(0);
 
         this.sky3=this.add.tileSprite(
             0,
@@ -162,17 +178,17 @@ class TableauPixelart extends Tableau{
         );
         this.sky3.setOrigin(0,0);
         this.sky3.setScrollFactor(0);
-
+        
        
         
     
 
-        //fait passer les éléments devant le ciel
-        this.stars.setDepth(10)
-        sol.setDepth(10)
-        maison.setDepth(9)
-        this.player.setDepth(10)
-        this.blood.setDepth(10)
+    //fait passer les éléments devant le ciel
+    this.stars.setDepth(10)
+    sol.setDepth(10)
+    maison.setDepth(9)
+    this.player.setDepth(10)
+     this.blood.setDepth(10)
 
     //monstres
         //tout les tableaux
@@ -185,33 +201,31 @@ class TableauPixelart extends Tableau{
         new MonsterFly(this,1200,100);
         //3eme tableau
         new Lanterne(this,2400,120);
+       
         new Lanterne(this,2540,120);
         //4eme tableau
-        new Lanterne(this,3350,120);
+        //new Lanterne(this,3350,120);
         new MonsterFly(this,2900,250);
         new MonsterFly(this,3000,120);
         new MonsterSol(this,2900,416);
-
-            
-
-
-        
+  
     }
-
-
-    
     update(){
         super.update();
         //le ciel se déplace moins vite que la caméra pour donner un effet paralax
         this.sky3.tilePositionX=this.cameras.main.scrollX//*0.6;
         this.sky3.tilePositionY=this.cameras.main.scrollY//*0.2;
+        //le ciel se déplace moins vite que la caméra pour donner un effet paralax
+        this.sky.tilePositionX=this.cameras.main.scrollX*0.2;
+        this.sky.tilePositionY=this.cameras.main.scrollY*0.2;
+
         //le deuxième ciel se déplace moins vite pour accentuer l'effet
         this.sky2.tilePositionX=this.cameras.main.scrollX*0.6//*0.3+500;
-        this.sky2.tilePositionY=this.cameras.main.scrollY+24//*0.1;
+        this.sky2.tilePositionY=this.cameras.main.scrollY+24//*0.11;
 
         //le ciel se déplace moins vite que la caméra pour donner un effet paralax
-        this.sky.tilePositionX=this.cameras.main.scrollX;//0.15;
-        this.sky.tilePositionY=this.cameras.main.scrollY;//*0.05;
+        this.sky4.tilePositionX=this.cameras.main.scrollX;//0.15;
+        this.sky4.tilePositionY=this.cameras.main.scrollY;//*0.05;
         
     }
 
